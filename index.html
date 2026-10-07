@@ -75,35 +75,50 @@
 <footer>このページはワークショップ用です。お題に出てくるサービス・製品は、すべて架空のものです。</footer>
 
 <script>
-  const status = document.getElementById("copy-status");
-  const fallback = document.getElementById("fallback");
-  let html = null;
+  // 全体を () => { ... } で囲み、変数がページ全体の名前とぶつからないようにする。
+  // iPhoneのブラウザ（WebKit）では、ブラウザにもともとある名前（status など）と同じ変数を作ると、スクリプトごと止まるため
+  (() => {
+    const copyStatus = document.getElementById("copy-status");
+    const fallback = document.getElementById("fallback");
+    let html = null;
 
-  // 押した瞬間にコピーできるよう、先に読み込んでおく（読み込みを待つと、ブラウザによってはコピーが拒否されるため）
-  const load = () => fetch("sample-ui.html").then((r) => (r.ok ? r.text() : Promise.reject())).then((t) => (html = t));
-  load().catch(() => {});
+    // 押した瞬間にコピーできるよう、先に読み込んでおく（読み込みを待つと、ブラウザによってはコピーが拒否されるため）
+    const load = () => fetch("sample-ui.html").then((r) => (r.ok ? r.text() : Promise.reject())).then((t) => (html = t));
+    load().catch(() => {});
 
-  document.getElementById("copy").addEventListener("click", async () => {
-    try {
-      if (html === null) await load();
-    } catch {
-      status.textContent = "読み込めませんでした。②のダウンロードを使ってください。";
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(html);
-      status.textContent = "コピーしました。AIのチャット欄に貼り付けてください。";
-      fallback.hidden = true;
-    } catch {
-      // コピーが拒否されたときは、枠に表示して手でコピーしてもらう
+    const done = () => { copyStatus.textContent = "コピーしました。AIのチャット欄に貼り付けてください。"; };
+
+    // コピーが拒否されたときの予備：枠に表示して選び、古い方法でコピーを試す。だめなら手で選んでもらう
+    function copyByHand() {
       fallback.value = html;
       fallback.hidden = false;
+      fallback.readOnly = false; // iPhoneでは、読み取り専用の枠は選択できないため一時的に外す
       fallback.focus();
-      fallback.select();
-      const ok = document.execCommand && document.execCommand("copy");
-      status.textContent = ok ? "コピーしました。AIのチャット欄に貼り付けてください。" : "自動でコピーできませんでした。下の枠の中身をすべて選んでコピーしてください。";
+      fallback.setSelectionRange(0, fallback.value.length);
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch {}
+      fallback.readOnly = true;
+      fallback.blur();
+      if (ok) { fallback.hidden = true; done(); }
+      else copyStatus.textContent = "自動でコピーできませんでした。下の枠を長押しして「すべてを選択」→「コピー」の順に押してください。";
     }
-  });
+
+    document.getElementById("copy").addEventListener("click", async () => {
+      try {
+        if (html === null) await load();
+      } catch {
+        copyStatus.textContent = "読み込めませんでした。②のダウンロードを使ってください。";
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(html);
+        fallback.hidden = true;
+        done();
+      } catch {
+        copyByHand();
+      }
+    });
+  })();
 </script>
 </body>
 </html>
