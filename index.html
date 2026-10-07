@@ -1,0 +1,109 @@
+<!doctype html>
+<!--
+  ダサいUIを作ろうワークショップ 配布ページ
+  このフォルダ（ugly-ui-workshop/public/）の中身は、公開用リポジトリに自動でコピーされて公開されます。
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お題の配布ページ｜ダサいUIを作ろうワークショップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@800&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b33;
+    --navy-2: #172747;
+    --navy-3: #22355e;
+    --gold: #c9a45c;
+    --gold-soft: #e8d3a2;
+    --ink: #f3eee3;
+    --muted: #a7b1c6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--navy);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+    line-height: 1.7;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 40px 16px 32px; }
+  .eyebrow { color: var(--gold); font-size: 14px; letter-spacing: .08em; margin: 0 0 8px; }
+  h1 { font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif; font-weight: 800; font-size: 30px; line-height: 1.3; margin: 0 0 12px; }
+  .lead { color: var(--gold-soft); margin: 0 0 32px; }
+  ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
+  .btn {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    min-height: 60px; padding: 12px 18px; border-radius: 12px;
+    background: var(--navy-2); border: 1px solid var(--gold); color: var(--ink);
+    font: inherit; font-size: 18px; font-weight: 700; text-decoration: none; cursor: pointer; text-align: left;
+  }
+  .btn:active { background: var(--navy-3); }
+  .no { font-family: "Shippori Mincho", serif; color: var(--gold); font-size: 24px; line-height: 1; }
+  .desc { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
+  .status { color: var(--gold-soft); font-size: 14px; margin: 8px 0 0; min-height: 1.7em; }
+  textarea { width: 100%; height: 160px; margin-top: 8px; font: 12px/1.5 monospace; color: var(--ink); background: var(--navy-2); border: 1px solid var(--navy-3); border-radius: 8px; padding: 8px; }
+  footer { max-width: 560px; margin: 0 auto; padding: 24px 16px 40px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--navy-3); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">ダサいUIを作ろうワークショップ</p>
+  <h1>お題の配布ページ</h1>
+  <p class="lead">講師の合図があるまで、ボタンはまだ押さないでください。</p>
+
+  <ol>
+    <li>
+      <a class="btn" href="sample-ui.html" target="_blank" rel="noopener"><span class="no">①</span>お題ページを開く</a>
+      <p class="desc">ブラウザで、お題の見本ページを開きます。</p>
+    </li>
+    <li>
+      <a class="btn" href="sample-ui.html" download="sample-ui.html"><span class="no">②</span>HTMLファイルをダウンロード</a>
+      <p class="desc">ダウンロードしたファイルを、AIに添付してください。</p>
+    </li>
+    <li>
+      <button class="btn" type="button" id="copy"><span class="no">③</span>HTMLをコピー</button>
+      <p class="desc">コピーしたHTMLを、AIのチャット欄に貼り付けてください。</p>
+      <noscript><p class="status">③を使うには、ブラウザでJavaScriptを有効にしてください。①と②は使えます。</p></noscript>
+      <p class="status" id="copy-status" role="status"></p>
+      <textarea id="fallback" readonly hidden aria-label="お題のHTML"></textarea>
+    </li>
+  </ol>
+</main>
+<footer>このページはワークショップ用です。お題に出てくるサービス・製品は、すべて架空のものです。</footer>
+
+<script>
+  const status = document.getElementById("copy-status");
+  const fallback = document.getElementById("fallback");
+  let html = null;
+
+  // 押した瞬間にコピーできるよう、先に読み込んでおく（読み込みを待つと、ブラウザによってはコピーが拒否されるため）
+  const load = () => fetch("sample-ui.html").then((r) => (r.ok ? r.text() : Promise.reject())).then((t) => (html = t));
+  load().catch(() => {});
+
+  document.getElementById("copy").addEventListener("click", async () => {
+    try {
+      if (html === null) await load();
+    } catch {
+      status.textContent = "読み込めませんでした。②のダウンロードを使ってください。";
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(html);
+      status.textContent = "コピーしました。AIのチャット欄に貼り付けてください。";
+      fallback.hidden = true;
+    } catch {
+      // コピーが拒否されたときは、枠に表示して手でコピーしてもらう
+      fallback.value = html;
+      fallback.hidden = false;
+      fallback.focus();
+      fallback.select();
+      const ok = document.execCommand && document.execCommand("copy");
+      status.textContent = ok ? "コピーしました。AIのチャット欄に貼り付けてください。" : "自動でコピーできませんでした。下の枠の中身をすべて選んでコピーしてください。";
+    }
+  });
+</script>
+</body>
+</html>

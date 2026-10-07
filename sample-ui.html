@@ -1,0 +1,497 @@
+<!doctype html>
+<!--
+  ダサいUIを作ろうワークショップ 見本UI（お題）
+  架空のクラウドファンディングサービス「ミライキック」の、架空の製品「カタッポ」のページです。
+  実在のサービス・製品とは関係ありません。支払いも発生しません。
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>カタッポ｜片方だけの靴下に、さよならを。- ミライキック</title>
+<style>
+  :root {
+    --green: #0a7d46;
+    --green-soft: #e7f4ed;
+    --text: #1a1a1a;
+    --muted: #5f6368;
+    --line: #e3e5e8;
+    --soft: #f6f7f8;
+    --error: #c62828;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  a { color: inherit; }
+
+  /* ヘッダー */
+  .site-header { border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .logo { font-weight: 700; color: var(--green); text-decoration: none; font-size: 18px; }
+  .site-header nav a { text-decoration: none; font-size: 14px; color: var(--muted); }
+
+  /* タイトル */
+  .hero { text-align: center; padding: 40px 0 24px; }
+  .hero h1 { font-size: clamp(24px, 4vw, 34px); line-height: 1.4; margin: 0 0 8px; }
+  .hero p { color: var(--muted); margin: 0; }
+
+  /* 製品のイラストと支援状況 */
+  .top { display: grid; gap: 32px; grid-template-columns: 3fr 2fr; align-items: start; }
+  .visual { margin: 0; background: var(--soft); border-radius: 12px; }
+  .visual svg { display: block; width: 100%; height: auto; }
+  .funding { padding-top: 4px; }
+  .raised { font-size: 32px; font-weight: 700; color: var(--green); margin: 0; line-height: 1.3; }
+  .goal { color: var(--muted); margin: 0 0 12px; font-size: 14px; }
+  .bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--green); }
+  .stats { display: flex; gap: 24px; list-style: none; padding: 0; margin: 16px 0 24px; }
+  .stats strong { display: block; font-size: 22px; line-height: 1.3; }
+  .stats span { color: var(--muted); font-size: 14px; }
+
+  /* ボタン */
+  .btn {
+    display: inline-block; border: 2px solid var(--green); border-radius: 8px;
+    padding: 12px 20px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap;
+    background: var(--green); color: #fff;
+  }
+  .btn-block { display: block; width: 100%; }
+  .btn-outline { background: #fff; color: var(--green); }
+  .btn:disabled { background: var(--soft); border-color: var(--line); color: var(--muted); cursor: not-allowed; }
+
+  /* 本文 */
+  .content { max-width: 720px; margin: 56px auto 0; }
+  section { margin-bottom: 56px; }
+  h2 { font-size: 24px; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 0 0 24px; }
+  h3 { font-size: 18px; margin: 32px 0 8px; }
+  .features { padding-left: 1.2em; }
+  .how { display: flex; gap: 32px; align-items: center; margin-top: 16px; }
+  .how figure { margin: 0; flex: 0 0 200px; text-align: center; }
+  .how figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+  .how ol { padding-left: 1.2em; margin: 0; }
+  .how li { margin-bottom: 12px; }
+  .spec { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .spec th, .spec td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .spec th { width: 32%; color: var(--muted); font-weight: 400; }
+
+  /* リターン */
+  .reward-list { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .reward { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
+  .reward-price { font-size: 22px; font-weight: 700; margin: 0; }
+  .reward h3 { margin: 4px 0 8px; }
+  .reward p { margin: 0 0 12px; }
+  .reward-meta { display: flex; gap: 24px; margin: 0 0 16px; font-size: 14px; }
+  .reward-meta dt { color: var(--muted); }
+  .reward-meta dd { margin: 0; font-weight: 700; }
+  .reward .btn { margin-top: auto; }
+  .reward.is-soldout { color: var(--muted); }
+
+  /* FAQ */
+  details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  summary { font-weight: 700; cursor: pointer; }
+  details p { margin: 8px 0 0; }
+
+  .site-footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: 13px; text-align: center; }
+
+  /* 支援の手続き */
+  .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, .5); display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .modal[hidden] { display: none; }
+  .modal-box { background: #fff; border-radius: 12px; width: 100%; max-width: 520px; max-height: 90vh; overflow: auto; padding: 24px; }
+  .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .modal-head h2 { border: 0; padding: 0; margin: 0; font-size: 18px; }
+  .close { background: none; border: 0; font: inherit; font-size: 14px; color: var(--muted); cursor: pointer; padding: 8px 0; white-space: nowrap; }
+  .stepper { display: flex; list-style: none; padding: 0; margin: 16px 0; gap: 8px; font-size: 13px; }
+  .stepper li { flex: 1; text-align: center; padding-top: 8px; border-top: 4px solid var(--line); color: var(--muted); }
+  .stepper li.is-done, .stepper li.is-current { border-color: var(--green); }
+  .stepper li.is-current { color: var(--text); font-weight: 700; }
+  .selected { background: var(--green-soft); border-radius: 8px; padding: 10px 14px; font-size: 14px; margin-bottom: 16px; }
+  .option { display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; }
+  .option:has(input:checked) { border-color: var(--green); background: var(--green-soft); }
+  .option-price { margin-left: auto; font-weight: 700; }
+  .option.is-soldout { color: var(--muted); cursor: not-allowed; }
+  label.field { display: block; font-weight: 700; margin-bottom: 4px; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+  .amount { width: 100%; font: inherit; font-size: 20px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; }
+  .amount[aria-invalid="true"] { border: 2px solid var(--error); }
+  .error { color: var(--error); font-size: 14px; margin: 6px 0 0; }
+  .add { display: flex; gap: 8px; margin: 12px 0 0; }
+  .add button { flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px; font: inherit; cursor: pointer; }
+  .actions { display: flex; gap: 12px; margin-top: 24px; }
+  .actions .btn { flex: 1; }
+  .actions .btn-outline { flex: 0 0 auto; }
+  .summary { margin: 0; }
+  .summary div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .summary dt { color: var(--muted); }
+  .summary dd { margin: 0; font-weight: 700; text-align: right; }
+  .note { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+  .noscript { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+
+  @media (max-width: 760px) {
+    .top { grid-template-columns: 1fr; gap: 24px; }
+    .how { flex-direction: column; }
+    .how figure { flex-basis: auto; width: 180px; }
+    .reward-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo">ミライキック</a>
+    <nav><a>ログイン</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>カタッポ ― 片方だけの靴下に、さよならを。</h1>
+    <p>小さなタグを縫い込んだ靴下。なくした片方を、スマホで探せます。</p>
+  </div>
+
+  <div class="top">
+    <figure class="visual">
+      <svg viewBox="0 0 400 260" role="img" aria-label="タグ付きの靴下が2枚並んだイラスト">
+        <g transform="translate(90 40)">
+          <path d="M10 0H70V100L118 128Q140 141 132 163Q124 182 100 176L28 150Q4 141 6 115Z" fill="#fff" stroke="#1a1a1a" stroke-width="3"/>
+          <rect x="10" y="0" width="60" height="22" fill="#0a7d46"/>
+          <circle cx="40" cy="38" r="7" fill="#1a1a1a"/>
+        </g>
+        <g transform="translate(220 50) rotate(8)">
+          <path d="M10 0H70V100L118 128Q140 141 132 163Q124 182 100 176L28 150Q4 141 6 115Z" fill="#fff" stroke="#1a1a1a" stroke-width="3"/>
+          <rect x="10" y="0" width="60" height="22" fill="#0a7d46"/>
+          <circle cx="40" cy="38" r="7" fill="#1a1a1a"/>
+          <path d="M56 26a16 16 0 0 1 0 24M64 18a28 28 0 0 1 0 40" fill="none" stroke="#0a7d46" stroke-width="3" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </figure>
+
+    <aside class="funding" aria-label="支援状況">
+      <p class="raised">1,385,000円</p>
+      <p class="goal">目標金額 1,000,000円</p>
+      <div class="bar" role="progressbar" aria-label="達成率" aria-valuenow="138" aria-valuemin="0" aria-valuemax="100"><span style="width: 100%"></span></div>
+      <ul class="stats">
+        <li><strong>138%</strong><span>達成</span></li>
+        <li><strong>412人</strong><span>支援者</span></li>
+        <li><strong>12日</strong><span>残り</span></li>
+      </ul>
+      <button class="btn btn-block" type="button" data-open>このプロジェクトを支援する</button>
+      <noscript><p class="noscript">支援の手続きを試すには、SafariやChromeなどのブラウザでこのページを開いてください。</p></noscript>
+    </aside>
+  </div>
+
+  <div class="content">
+    <section id="story">
+      <h2>ストーリー</h2>
+
+      <h3>洗濯のたびに、片方だけ消える</h3>
+      <p>洗濯機に入れたときは2枚だったのに、取り出すと1枚。引き出しには、相手のいない靴下がたまっていきます。そんな経験はありませんか？</p>
+
+      <h3>カタッポなら、スマホで探せます</h3>
+      <p>カタッポは、ゴム部分に小さなタグを縫い込んだ靴下です。片方が見つからないときは、スマホのアプリを開くだけ。矢印と距離が、片方のいる場所まで案内します。</p>
+      <ul class="features">
+        <li>矢印と距離で、片方のいる方向がひと目で分かる</li>
+        <li>近くまで来たら、靴下から音を鳴らせる</li>
+        <li>左右が離れると「ペアが離れ離れです」とお知らせ</li>
+        <li>洗濯機・乾燥機OK。電池は約1年もつ</li>
+      </ul>
+
+      <h3>しくみ</h3>
+      <div class="how">
+        <figure>
+          <svg viewBox="0 0 260 500" role="img" aria-label="スマホのアプリで靴下を探す画面。矢印が右前方を指し、あと1.2メートルと表示されている">
+            <rect width="260" height="500" rx="38" fill="#1a1a1a"/>
+            <rect x="10" y="10" width="240" height="480" rx="30" fill="#0e0e0e"/>
+            <rect x="105" y="24" width="50" height="14" rx="7" fill="#000"/>
+            <text x="130" y="84" fill="#fff" font-size="18" font-weight="700" text-anchor="middle">カタッポ（左）</text>
+            <text x="130" y="108" fill="#9aa0a6" font-size="13" text-anchor="middle">最終確認：2分前</text>
+            <path d="M0-72L42-12H15V62H-15V-12H-42Z" fill="#fff" transform="translate(130 232) rotate(35)"/>
+            <text x="130" y="360" fill="#fff" font-size="46" font-weight="700" text-anchor="middle">1.2 m</text>
+            <text x="130" y="392" fill="#cfd3d6" font-size="18" text-anchor="middle">右前方</text>
+            <rect x="45" y="420" width="170" height="44" rx="22" fill="#2b2b2b"/>
+            <path d="M80 436h6l8-7v26l-8-7h-6z" fill="#fff"/>
+            <path d="M99 435a9 9 0 0 1 0 14" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <text x="148" y="448" fill="#fff" font-size="15" text-anchor="middle">音を鳴らす</text>
+          </svg>
+          <figcaption>アプリの「探す」画面</figcaption>
+        </figure>
+        <ol>
+          <li>靴下とスマホを、アプリでペアリングします。</li>
+          <li>片方が見つからないときは、アプリで「探す」を押します。</li>
+          <li>矢印の方向に進みます。近くまで来たら「音を鳴らす」で、靴下から音が出ます。</li>
+        </ol>
+      </div>
+
+      <h3>仕様</h3>
+      <table class="spec">
+        <tr><th>通信方式</th><td>Bluetooth（スマホとつながる無線）</td></tr>
+        <tr><th>探せる範囲</th><td>見通しのよい場所で約10m</td></tr>
+        <tr><th>電池</th><td>約1年（残りが少なくなると、アプリでお知らせ）</td></tr>
+        <tr><th>お手入れ</th><td>洗濯機・乾燥機OK（洗濯ネットの使用をおすすめします）</td></tr>
+        <tr><th>素材</th><td>綿80%、ポリエステル18%、ポリウレタン2%</td></tr>
+        <tr><th>サイズ</th><td>S（22〜24cm）、M（24〜26cm）、L（26〜28cm）</td></tr>
+        <tr><th>対応スマホ</th><td>iPhone、Android（専用アプリは無料）</td></tr>
+      </table>
+    </section>
+
+    <section id="rewards">
+      <h2>リターン</h2>
+      <div class="reward-list">
+        <article class="reward">
+          <p class="reward-price">1,980円</p>
+          <h3>片方だけプラン</h3>
+          <p>カタッポ 片方×1。すでに片方をなくした方へ。</p>
+          <dl class="reward-meta">
+            <div><dt>お届け予定</dt><dd>2027年3月</dd></div>
+            <div><dt>残り</dt><dd>58個</dd></div>
+          </dl>
+          <button class="btn btn-outline" type="button" data-reward="r1">このリターンで支援する</button>
+        </article>
+        <article class="reward is-soldout">
+          <p class="reward-price">3,480円</p>
+          <h3>【早割】1足プラン</h3>
+          <p>カタッポ 1足（左右）×1。先着100名さま限定の早割価格です。</p>
+          <dl class="reward-meta">
+            <div><dt>お届け予定</dt><dd>2027年3月</dd></div>
+            <div><dt>残り</dt><dd>売り切れ</dd></div>
+          </dl>
+          <button class="btn btn-outline" type="button" disabled>売り切れ</button>
+        </article>
+        <article class="reward">
+          <p class="reward-price">3,980円</p>
+          <h3>1足プラン</h3>
+          <p>カタッポ 1足（左右）×1。</p>
+          <dl class="reward-meta">
+            <div><dt>お届け予定</dt><dd>2027年3月</dd></div>
+            <div><dt>残り</dt><dd>120個</dd></div>
+          </dl>
+          <button class="btn btn-outline" type="button" data-reward="r3">このリターンで支援する</button>
+        </article>
+        <article class="reward">
+          <p class="reward-price">9,800円</p>
+          <h3>3足セット</h3>
+          <p>カタッポ 3足。洗い替えにも安心です。</p>
+          <dl class="reward-meta">
+            <div><dt>お届け予定</dt><dd>2027年3月</dd></div>
+            <div><dt>残り</dt><dd>64個</dd></div>
+          </dl>
+          <button class="btn btn-outline" type="button" data-reward="r4">このリターンで支援する</button>
+        </article>
+        <article class="reward">
+          <p class="reward-price">19,800円</p>
+          <h3>家族まるごとプラン</h3>
+          <p>カタッポ 10足と、専用の洗濯ネット。家族みんなの片方を守ります。</p>
+          <dl class="reward-meta">
+            <div><dt>お届け予定</dt><dd>2027年3月</dd></div>
+            <div><dt>残り</dt><dd>9個</dd></div>
+          </dl>
+          <button class="btn btn-outline" type="button" data-reward="r5">このリターンで支援する</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>よくある質問</h2>
+      <details>
+        <summary>洗濯機で洗えますか？</summary>
+        <p>はい。洗濯機・乾燥機のどちらにも対応しています。洗濯ネットに入れると、より長持ちします。</p>
+      </details>
+      <details>
+        <summary>電池が切れたらどうなりますか？</summary>
+        <p>電池は約1年もちます。残りが少なくなるとアプリでお知らせします。電池が切れても、ふつうの靴下としてお使いいただけます。</p>
+      </details>
+      <details>
+        <summary>片方だけプランは、左右どちらが届きますか？</summary>
+        <p>カタッポには左右の区別がありません。お手元に残った片方と組み合わせてお使いください。なお、探せるのはタグの付いたカタッポの側だけです。</p>
+      </details>
+    </section>
+
+    <section id="creator">
+      <h2>作り手</h2>
+      <p><strong>カタッポ開発チーム</strong><br>これまでに3人で合計312枚の靴下を片方だけなくしてきたチームです。「片方を探す時間を、人生から取り戻したい」という思いで開発を始めました。</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  © 2026 ミライキック ／ このページはワークショップ用の見本です。サービス・製品はすべて架空のものです。
+</footer>
+
+<!-- 支援の手続き -->
+<div class="modal" id="pledge" role="dialog" aria-modal="true" aria-labelledby="pledge-title" hidden>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pledge-title">プロジェクトを支援する</h2>
+      <button class="close" type="button" data-close>✕ キャンセル</button>
+    </div>
+    <ol class="stepper" id="stepper">
+      <li>リターン選択</li>
+      <li>金額入力</li>
+      <li>確認</li>
+    </ol>
+    <div class="selected" id="selected" hidden></div>
+
+    <div data-step="1">
+      <div>
+        <label class="option">
+          <input type="radio" name="reward" value="r1" data-name="片方だけプラン" data-price="1980" data-desc="カタッポ 片方×1。すでに片方をなくした方へ。" data-ship="2027年3月">
+          <span>片方だけプラン</span>
+          <span class="option-price">1,980円</span>
+        </label>
+        <label class="option is-soldout">
+          <input type="radio" name="reward" value="r2" disabled>
+          <span>【早割】1足プラン</span>
+          <span class="option-price">売り切れ</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="reward" value="r3" data-name="1足プラン" data-price="3980" data-desc="カタッポ 1足（左右）×1。" data-ship="2027年3月">
+          <span>1足プラン</span>
+          <span class="option-price">3,980円</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="reward" value="r4" data-name="3足セット" data-price="9800" data-desc="カタッポ 3足。洗い替えにも安心です。" data-ship="2027年3月">
+          <span>3足セット</span>
+          <span class="option-price">9,800円</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="reward" value="r5" data-name="家族まるごとプラン" data-price="19800" data-desc="カタッポ 10足と、専用の洗濯ネット。家族みんなの片方を守ります。" data-ship="2027年3月">
+          <span>家族まるごとプラン</span>
+          <span class="option-price">19,800円</span>
+        </label>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="to-2" disabled>次へ</button>
+      </div>
+    </div>
+
+    <div data-step="2" hidden>
+      <label class="field" for="amount">支援金額（円）</label>
+      <p class="hint" id="amount-hint"></p>
+      <input class="amount" id="amount" type="number" inputmode="numeric" aria-describedby="amount-hint amount-error">
+      <p class="error" id="amount-error" hidden></p>
+      <div class="add">
+        <button type="button" data-add="500">＋500円</button>
+        <button type="button" data-add="1000">＋1,000円</button>
+        <button type="button" data-add="3000">＋3,000円</button>
+      </div>
+      <div class="actions">
+        <button class="btn btn-outline" type="button" data-back="1">戻る</button>
+        <button class="btn" type="button" id="to-3">次へ</button>
+      </div>
+    </div>
+
+    <div data-step="3" hidden>
+      <dl class="summary" id="summary"></dl>
+      <div class="actions">
+        <button class="btn btn-outline" type="button" data-back="2">戻る</button>
+        <button class="btn" type="button" id="to-4">支援を確定する</button>
+      </div>
+      <p class="note">※ワークショップ用の見本のため、実際の支払いは発生しません。</p>
+    </div>
+
+    <div data-step="4" hidden>
+      <h3>支援が完了しました</h3>
+      <p>ご支援ありがとうございます。カタッポのお届けまで、もう少しお待ちください。</p>
+      <div class="actions">
+        <button class="btn" type="button" data-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const yen = (n) => n.toLocaleString("ja-JP") + "円";
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+
+  const modal = $("#pledge");
+  const amountInput = $("#amount");
+  const amountError = $("#amount-error");
+  let reward = null;
+
+  function showStep(step) {
+    $$("[data-step]").forEach((el) => (el.hidden = el.dataset.step !== String(step)));
+    $$("#stepper li").forEach((li, i) => {
+      li.classList.toggle("is-current", i + 1 === step);
+      li.classList.toggle("is-done", i + 1 < step);
+    });
+    $("#selected").hidden = !(reward && (step === 2 || step === 3));
+  }
+
+  function selectReward(id) {
+    const input = $(`input[name="reward"][value="${id}"]`);
+    input.checked = true;
+    const d = input.dataset;
+    reward = { name: d.name, price: Number(d.price), desc: d.desc, ship: d.ship };
+    $("#to-2").disabled = false;
+    $("#selected").textContent = `選んだリターン：${reward.name}（${yen(reward.price)}）`;
+    $("#amount-hint").textContent = `最低金額：${yen(reward.price)}（リターンの金額）。上乗せもできます。`;
+    amountInput.value = reward.price;
+    clearError();
+  }
+
+  function openModal(id) {
+    reward = null;
+    $$('input[name="reward"]').forEach((el) => (el.checked = false));
+    $("#to-2").disabled = true;
+    if (id) { selectReward(id); showStep(2); } else { showStep(1); }
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  function clearError() {
+    amountError.hidden = true;
+    amountInput.removeAttribute("aria-invalid");
+  }
+
+  function checkAmount() {
+    const value = Number(amountInput.value);
+    if (amountInput.value === "" || !Number.isInteger(value)) {
+      amountError.textContent = "金額を数字で入力してください。";
+    } else if (value < reward.price) {
+      amountError.textContent = `${yen(reward.price)}以上で入力してください（いま：${yen(value)}）。`;
+    } else {
+      return true;
+    }
+    amountError.hidden = false;
+    amountInput.setAttribute("aria-invalid", "true");
+    return false;
+  }
+
+  $("[data-open]").addEventListener("click", () => openModal());
+  $$("[data-reward]").forEach((b) => b.addEventListener("click", () => openModal(b.dataset.reward)));
+  $$("[data-close]").forEach((b) => b.addEventListener("click", closeModal));
+  $$("[data-back]").forEach((b) => b.addEventListener("click", () => showStep(Number(b.dataset.back))));
+  $$('input[name="reward"]').forEach((el) => el.addEventListener("change", () => selectReward(el.value)));
+  $$("[data-add]").forEach((b) => b.addEventListener("click", () => {
+    amountInput.value = (Number(amountInput.value) || 0) + Number(b.dataset.add);
+    clearError();
+  }));
+  amountInput.addEventListener("input", clearError);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+
+  $("#to-2").addEventListener("click", () => showStep(2));
+  $("#to-3").addEventListener("click", () => {
+    if (!checkAmount()) return;
+    $("#summary").innerHTML = `
+      <div><dt>リターン</dt><dd>${reward.name}</dd></div>
+      <div><dt>内容</dt><dd>${reward.desc}</dd></div>
+      <div><dt>お届け予定</dt><dd>${reward.ship}</dd></div>
+      <div><dt>支援金額</dt><dd>${yen(Number(amountInput.value))}</dd></div>`;
+    showStep(3);
+  });
+  $("#to-4").addEventListener("click", () => showStep(4));
+</script>
+</body>
+</html>
