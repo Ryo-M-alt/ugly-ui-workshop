@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【運命】カタッポ｜あなたの人生は靴下の片方を探すためにある。</title>
+<style>
+:root{--pink:#f000bc;--lemon:#fff400;--cyan:#00ffff;--lime:#b0ff00;--violet:#47009a;--red:#f40000;--ink:#170026}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"Comic Sans MS","Hiragino Maru Gothic ProN",Meiryo,sans-serif;background:repeating-linear-gradient(45deg,#ffeff9 0 25px,#edfffb 25px 50px);line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:4px dashed var(--red);outline-offset:3px}a{color:#2500d8;font-weight:900}small{font-size:.76rem}.hide{display:none!important}[hidden]{display:none!important}
+.ticker{background:#130044;color:var(--lemon);overflow:hidden;white-space:nowrap;border-bottom:7px dotted #00ff7b;font:bold 18px/2 Georgia,serif}.ticker span{display:inline-block;padding-left:12px;animation:march 23s linear infinite}@keyframes march{to{transform:translateX(-100%)}}
+header{background:var(--lemon);border-bottom:9px ridge var(--pink);box-shadow:0 8px 0 var(--cyan)}.topbar{max-width:1180px;padding:13px 15px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}.logo{font:bold 31px Georgia,serif;text-shadow:3px 3px 0 var(--pink),-2px -2px 0 var(--cyan);transform:rotate(-2deg)}.login{background:#000;color:var(--lemon);border:5px dashed var(--pink);padding:6px 14px}.wrap{max-width:1190px;margin:auto;padding:0 16px}
+.ribbon{background:var(--pink);color:white;font:bold 19px/1.3 Georgia,serif;padding:10px;text-align:center;letter-spacing:.09em;text-shadow:2px 2px black}
+.hero{position:relative;overflow:hidden;margin:30px auto 22px;padding:24px 22px 18px;border:11px ridge #b99120;background:linear-gradient(125deg,#fff5a5,#ffb4f0 52%,#9cfaff);box-shadow:12px 12px 0 var(--violet),16px 16px 0 var(--lime);text-align:center}.hero::before{content:"★ 運命 ★";position:absolute;right:-28px;top:20px;transform:rotate(26deg);background:var(--red);color:white;font-size:16px;padding:9px 35px}.mini-head{display:inline-block;background:var(--violet);color:white;border:4px solid var(--lime);padding:3px 15px;font:bold 16px Georgia,serif}.hero h1{font-size:clamp(32px,5.2vw,68px);line-height:1.14;margin:15px 0;color:var(--red);font-weight:1000;letter-spacing:-.06em;text-shadow:3px 3px var(--lemon),6px 6px var(--pink),8px 8px var(--cyan);transform:rotate(-1deg)}.hero p{max-width:780px;margin:12px auto;font-size:clamp(18px,2.3vw,25px);font-weight:900;background:rgba(255,255,255,.72);padding:12px;border:4px dotted #ff008c}.hero .aside-copy{font-size:14px;color:#530057;background:var(--lemon);display:inline-block;padding:2px 16px;border:2px dashed var(--red)}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:7px}.badges span{background:var(--lime);color:black;border:3px outset red;padding:5px 8px;font-size:13px;font-weight:900}.badges span:nth-child(even){background:var(--cyan);transform:rotate(3deg)}
+main .cols{display:grid;grid-template-columns: minmax(0,1.3fr) minmax(300px,.8fr);gap:24px;align-items:start}.product{background:white;border:8px dashed var(--pink);padding:15px;position:relative}.product .stamp{position:absolute;right:7px;top:9px;background:var(--red);color:white;border-radius:100%;height:105px;width:105px;display:grid;place-items:center;text-align:center;font-size:18px;font-weight:900;transform:rotate(15deg);border:6px double var(--lemon);z-index:1}.sock-scene{position:relative;min-height:330px;background:radial-gradient(circle,var(--lemon),#f7e7ff 65%);display:flex;align-items:center;justify-content:center;gap:12px;overflow:hidden}.sock{width:min(41%,215px);filter:drop-shadow(8px 7px 0 #ff00a2);animation:wobble 6s ease-in-out infinite}.sock.second{opacity:.17;filter:grayscale(1);transform:rotate(30deg)}@keyframes wobble{0%,100%{translate:0 0}50%{translate:0 -10px}}.scene-label{position:absolute;bottom:10px;left:10px;color:#fff;background:#000;padding:5px 9px;font-weight:900;transform:rotate(2deg)}.product-caption{background:var(--cyan);border:5px solid var(--red);text-align:center;font-weight:900;font-size:18px;padding:8px}
+.funding{background:var(--lemon);border:10px ridge var(--violet);padding:17px;box-shadow:-8px 9px 0 var(--pink);position:relative}.funding .raised{font:bold 37px/1.3 Georgia,serif;letter-spacing:-.05em;color:var(--red);text-shadow:3px 3px var(--pink)}.wrongprogress{height:29px;background:repeating-linear-gradient(90deg,#fff 0 10px,#333 10px 20px);border:5px inset var(--cyan);position:relative;margin:15px 0}.wrongprogress span{width:34%;height:100%;display:block;background:linear-gradient(90deg,#00ff0c,var(--pink));transition:width .4s}.percentline{color:#4c009d;font-weight:bold;text-align:right}.statistics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;text-align:center}.statistics div{background:var(--cyan);border:3px outset var(--pink);padding:6px 2px}.statistics strong{font-size:19px;display:block}.statistics small{display:block}.bigcta{background:var(--red);color:white;border:8px outset var(--lemon);font-weight:1000;font-size:clamp(17px,2.3vw,26px);padding:15px 10px;display:block;width:100%;box-shadow:6px 6px 0 #000;text-shadow:2px 2px #000;margin-top:20px;transition:transform .18s}.tiny{font-size:12px;color:#600054}.text-center{text-align:center}
+.block{margin-top:45px;border:7px double var(--violet);padding:18px;background:#fff;box-shadow:7px 7px var(--pink)}.block h2{display:table;margin:-33px auto 18px;padding:6px 23px;background:var(--lemon);color:#a40000;border:5px solid var(--pink);box-shadow:4px 4px var(--cyan);font-size:clamp(23px,3vw,37px);transform:rotate(-1deg)}.block h3{color:#c40090;font-size:21px}.manifesto{display:grid;grid-template-columns:1fr 1fr;gap:13px}.manifesto div{padding:14px;border:6px ridge var(--pink);background:var(--cyan);font-weight:900}.manifesto div:nth-child(even){background:var(--lime);border-color:var(--red);transform:rotate(1deg)}.values{background:#220050;color:white;text-align:center;font:bold 25px Georgia,serif;letter-spacing:.1em;padding:20px;border:5px dotted var(--lemon);margin:20px 0}.fineprint{font-size:12px;line-height:1.2;background:#f1f1f1;color:#777}.spec{width:100%;border-collapse:separate;border-spacing:4px;font-size:13px}.spec td,.spec th{border:3px groove #ff0099;padding:7px;vertical-align:top}.spec th{background:var(--lemon);text-align:right;width:35%}.spec td{background:#e1fffe}
+.rewards{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:15px}.reward{padding:13px;border:7px ridge var(--pink);background:linear-gradient(145deg,#00ffff,#fff500);box-shadow:5px 6px #000;min-height:305px;display:flex;flex-direction:column;position:relative}.reward:nth-child(even){background:linear-gradient(145deg,#ffb1ed,#b3ff00);transform:rotate(1deg)}.reward .price{font-size:30px;font-family:Georgia,serif;color:#ed0000;font-weight:900;text-shadow:3px 3px var(--lemon)}.reward h3{background:#250051;color:#fff;padding:7px;margin:4px 0}.reward p{margin:7px 0}.reward .data{font-size:13px;font-weight:900}.reward button{margin-top:auto;padding:12px 5px;background:var(--red);color:white;border:5px outset var(--lemon);font-weight:900}.reward.soldout::before{content:"★ 人気No.1 ★";position:absolute;top:-15px;right:-11px;color:white;background:var(--red);padding:3px 6px;transform:rotate(18deg);font-weight:900}.reward.soldout button{background:var(--lime);color:black}
+.faq details{background:var(--lemon);border:5px outset var(--pink);padding:12px;margin:10px 0}.faq details:nth-child(odd){background:var(--cyan)}.faq summary{cursor:pointer;font-weight:900}.faq p{margin-bottom:0}.footer{background:var(--violet);color:white;margin-top:45px;padding:24px;text-align:center;border-top:12px ridge var(--lemon)}.footer button{background:var(--lime);color:black;border:4px outset var(--pink);padding:5px 11px;margin:6px;cursor:pointer}.crown{display:inline-block;transform:rotate(-7deg);color:#e50000}.mini-spacer{padding:5px}
+/* 自分勝手なモーダル。ワークショップ用のため強制課金などは一切ない。 */
+.overlay{position:fixed;inset:0;z-index:200;background:rgba(21,0,39,.79);padding:15px;display:flex;justify-content:center;align-items:center}.modal{position:relative;background:linear-gradient(140deg,#fff400,#ffcbeb 50%,#00ffff);border:12px ridge var(--pink);box-shadow:14px 14px 0 var(--lime);padding:17px;width:min(690px,100%);max-height:92vh;overflow:auto}.modal h2{margin:6px 0;color:var(--red);font:bold clamp(23px,3vw,35px) Georgia,serif;text-shadow:2px 2px var(--lemon)}.modal-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.close{background:var(--cyan);border:4px dashed var(--red);font-weight:900;padding:6px 8px;flex-shrink:0}.stepper{display:flex;gap:4px;padding:0;list-style:none;margin:12px 0}.stepper li{flex:1;background:#eee;color:#888;border:3px dotted #888;padding:7px 2px;text-align:center;font-size:12px;font-weight:900}.stepper li.current{background:var(--lime);color:black;border-color:var(--red)}.stepper li.done{background:var(--pink);color:white}.hintBox{font-weight:900;background:#200044;color:white;padding:11px;margin:13px 0;border:5px dashed var(--lemon)}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}.socktile{height:80px;background:#0000a5;color:var(--lemon);border:5px outset var(--pink);font-size:28px;font-weight:bold}.socktile.revealed{background:var(--cyan);color:#000}.socktile.matched{background:var(--lime);color:var(--ink);border-style:inset}.options{display:grid;gap:7px}.option{display:block;background:white;border:4px outset var(--violet);font-weight:900;padding:10px;cursor:pointer}.option:has(input:checked){border-color:var(--red);background:var(--lime)}.option span{float:right}.actions{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}.action{padding:11px 14px;background:var(--red);color:white;border:6px outset var(--lemon);font-weight:1000;font-size:16px}.action.secondary{background:var(--cyan);color:#000;border-color:var(--pink)}.action:disabled{background:#ccc;color:#666;border-color:#999;cursor:not-allowed}.amount-display{font:bold 44px Georgia,serif;color:var(--red);background:white;border:5px ridge var(--violet);text-align:center;margin:10px 0;padding:6px}.increment{display:grid;grid-template-columns:1fr 1fr;gap:8px}.increment button{background:var(--cyan);border:7px outset var(--pink);font-size:24px;font-weight:900;padding:16px}.shortcut{background:var(--lime);border:6px dashed var(--red);padding:12px;display:block;width:100%;margin-top:12px;font-weight:900}.secret-input{font-size:12px;margin-top:12px}.secret-input input{width:140px;padding:4px}.error{border:5px solid var(--red);background:#fff;color:var(--red);font-weight:900;padding:12px;margin-top:8px}.confirm-list{background:#fff;border:7px groove var(--pink);padding:9px;margin:12px 0}.confirm-list div{display:flex;justify-content:space-between;padding:9px;border-bottom:1px dashed #888;gap:10px}.confirm-list b{background:#111;color:white;padding:0 6px}.result{background:#fff;padding:22px;text-align:center;border:8px double var(--lime)}.result h3{font-size:30px;color:var(--red)}.learn{background:#fcfcfc;color:#222;border:7px solid #333;padding:20px;margin:20px auto;max-width:1100px;box-shadow:5px 5px #aaa}.learn table{width:100%;border-collapse:collapse}.learn td,.learn th{border-bottom:1px solid #ccc;text-align:left;padding:8px}.learn th:first-child{width:30%}.toast{position:fixed;z-index:400;bottom:16px;right:15px;max-width:min(420px,calc(100% - 30px));background:#220044;color:var(--lemon);padding:17px;border:8px ridge var(--pink);font-weight:900;box-shadow:5px 6px var(--cyan)}.toast button{float:right;background:var(--lemon);border:1px solid #111;font-size:13px;margin-left:10px}.footmark{font-size:16px}
+@media(max-width:760px){main .cols{grid-template-columns:1fr}.manifesto{grid-template-columns:1fr}.hero{margin-right:12px}.funding{box-shadow:5px 5px var(--pink)}.hero::before{font-size:12px}.sock-scene{min-height:250px}.modal{padding:10px;border-width:7px;box-shadow:5px 5px var(--lime)}.stepper li{font-size:10px}.logo{font-size:24px}.modal-head{align-items:center}.close{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="ticker" aria-label="大事なことなので繰り返します：人生は靴下の片方を探すためにある"><span>★★ あなたの人生は靴下の片方を探すためにある ★★ 簡単に見つけてはいけません ★★ 非効率は愛です ★★</span></div>
+<header><div class="topbar"><div class="logo">🧦 ミライキック・靴下道® <small>（気持ちだけ公式）</small></div><button class="login" id="login" type="button">ログイン？（未実装）</button></div></header>
+<div class="ribbon">靴下を探すこと、それこそが生きること。　　※いいえ、よく考えると全然そんなことはありません</div>
+<main class="wrap">
+<section class="hero" aria-labelledby="main-title">
+<div class="mini-head">世界が見失った真理！　片方探索型クラウドファンディング</div>
+<h1 id="main-title">あなたの人生は<br>靴下の片方を<br>探すためにある。</h1>
+<p>カタッポ ― 片方を探す時間を、もっと長く、もっと尊く、もっと面倒に。</p>
+<div class="aside-copy">「同じ靴下をたくさん買う」という合理論は、ここでは禁句です。</div>
+<div class="badges"><span>＼探すことが目的／</span><span>使いにくさ★★★★★</span><span>効率、ゼロへ</span><span>靴下が逃げる！</span><span>確認は念入りに×7</span></div>
+</section>
+<div class="cols">
+<div class="product">
+<div class="stamp">片方<br>未発見<br>記念</div>
+<div class="sock-scene">
+<svg class="sock" viewBox="0 0 210 265" role="img" aria-label="青い模様の白い靴下"><path d="M38 12H120V145L179 177Q207 199 184 227Q169 244 145 235L47 198Q24 188 27 156Z" fill="#fff" stroke="#200050" stroke-width="9"/><path d="M38 12H120V54H38Z" fill="#f000bc"/><circle cx="81" cy="77" r="14" fill="#00c9ee"/><path d="M47 192l45 17 5-27-33-15z" fill="#fff400"/></svg>
+<svg class="sock second" viewBox="0 0 210 265" role="img" aria-label="見つからないもう一方の靴下の影"><path d="M38 12H120V145L179 177Q207 199 184 227Q169 244 145 235L47 198Q24 188 27 156Z" fill="#fff" stroke="#200050" stroke-width="9"/><path d="M38 12H120V54H38Z" fill="#f000bc"/></svg>
+<div class="scene-label">※右の靴下は心の目で見てください。</div>
+</div>
+<div class="product-caption">靴下を見つける製品を、見つけにくいUIで販売しています。</div>
+</div>
+<aside class="funding" aria-label="頼りにならない支援状況">
+<div style="background:#000;color:#fff;font-weight:900;padding:4px">現在のクラウドファンディング進行度（諸説あります）</div>
+<p class="raised">1,385,000円</p><p>目標金額：1,000,000円　／　志は無限大</p>
+<div class="wrongprogress" role="img" aria-label="数値と一致しない意図的に誤った進捗バー"><span id="progressBar"></span></div>
+<p class="percentline" id="progressText">達成率 138%！　棒は34%！</p>
+<div class="statistics"><div><strong>412人</strong><small>同志</small></div><div><strong>12日</strong><small>残り？</small></div><div><strong>永久</strong><small>探索期間</small></div></div>
+<div class="hintBox" id="statusText" aria-live="polite">システム状態：まだ始まっていませんが、ほぼ完了です。</div>
+<button class="bigcta" id="escapeButton" type="button">👆 人生を靴下に捧げる（クリックできれば）</button>
+<p class="tiny">※ボタンは最大3回逃げます。運命とマウス操作をお楽しみください。</p>
+</aside>
+</div>
+<section class="block" id="story"><h2>📣 教義・ストーリー</h2>
+<p style="font-size:20px;font-weight:900">洗濯機に入れたときは2枚。取り出すと1枚。ここにあなたが生まれた理由があります。</p>
+<div class="values">探せ。　迷え。　揃えよ。</div>
+<div class="manifesto"><div>便利さとは甘えである。靴下の片方と向き合え。</div><div>迷子の靴下はあなたを試している。だからUIもあなたを試す。</div><div>最短経路？　人生にショートカットは存在しない（実はあります）。</div><div>ペアが揃ったとき、次の片方を失う準備が始まる。</div></div>
+<h3>カタッポの特徴（何かがおかしい）</h3><p>本来は小さなタグを縫い込んだ靴下で、スマホの矢印と距離で片方を探し、近づいたら音を鳴らせます。でも、このページは簡単に探させません。</p>
+<h3>仕様（急にまとも、でも字が小さい）</h3>
+<table class="spec"><tr><th>通信方式</th><td>Bluetooth</td></tr><tr><th>探せる範囲</th><td>見通しのよい場所で約10m</td></tr><tr><th>電池</th><td>約1年</td></tr><tr><th>お手入れ</th><td>洗濯機・乾燥機OK（洗濯ネット推奨）</td></tr><tr><th>素材</th><td>綿80%、ポリエステル18%、ポリウレタン2%</td></tr><tr><th>サイズ</th><td>S（22〜24cm）、M（24〜26cm）、L（26〜28cm）</td></tr><tr><th>対応</th><td>iPhone・Android</td></tr></table>
+</section>
+<section class="block" id="rewards"><h2>🎁 人生のリターン（商品です）</h2><p>全プランを堂々と展示していますが、どのボタンも正直ではありません。</p>
+<div class="rewards">
+<article class="reward"><div class="price">1,980円</div><h3>片方だけプラン</h3><p>カタッポ片方×1。片方だけを愛する方へ。</p><p class="data">2027年3月予定 / 残り58個</p><button type="button" data-reward="r1">この運命を引き受ける</button></article>
+<article class="reward soldout"><div class="price">3,480円</div><h3>【早割】1足プラン</h3><p>先着100名様の早割。売り切れですが押せます。</p><p class="data">2027年3月予定 / 売り切れ</p><button type="button" data-reward="r2">チャンス！今すぐ支援</button></article>
+<article class="reward"><div class="price">3,980円</div><h3>1足プラン</h3><p>カタッポ1足（左右）×1。</p><p class="data">2027年3月予定 / 残り120個</p><button type="button" data-reward="r3">道を開く（？）</button></article>
+<article class="reward"><div class="price">9,800円</div><h3>3足セット</h3><p>カタッポ3足。洗い替えにも安心。</p><p class="data">2027年3月予定 / 残り64個</p><button type="button" data-reward="r4">覚悟を見せる</button></article>
+<article class="reward"><div class="price">19,800円</div><h3>家族まるごとプラン</h3><p>カタッポ10足と専用洗濯ネット。</p><p class="data">2027年3月予定 / 残り9個</p><button type="button" data-reward="r5">家族を巻き込む</button></article>
+</div></section>
+<section class="block faq" id="faq"><h2>❓ よくある質問（答えない）</h2>
+<details><summary>洗濯機で洗えますか？</summary><p>まず、洗濯とは何でしょうか。汚れを落とす行為でしょうか。それとも心に付着した怠惰を洗い流す儀式でしょうか。（技術的には洗濯機・乾燥機に対応しています）</p></details>
+<details><summary>電池が切れたらどうなりますか？</summary><p>技術は尽きても、探索の心は尽きません。なお、電池が切れても普通の靴下としてお使いいただけます。</p></details>
+<details><summary>片方だけプランは左右どちらが届きますか？</summary><p>左右を気にするうちは、まだ本質に至っていません。実際のカタッポには左右の区別はありません。</p></details>
+<details><summary>同じ靴下を何足も買えばよいのでは？</summary><p>それを言ってしまうと、このサイトの思想も存在意義も消えてしまいます。どうかご容赦ください。</p></details>
+</section>
+<section class="block" id="creator"><h2>👑 作り手</h2><p><strong>カタッポ開発チーム</strong>：3人で合計312枚の靴下を片方だけなくしたチーム。元の商品理念は「探す時間を取り戻す」でしたが、このデモのサイト運営思想と深刻な衝突を起こしています。</p></section>
+</main>
+<footer class="footer"><strong>© 2026 ミライキック・靴下道（全部フィクション）</strong><br>このページはユーザビリティ教育のために意図的に使いにくくしたものです。実際の購入・支払い・送信は一切ありません。<br><button id="learnToggle" type="button" aria-expanded="false">🔎 教育用：破った10原則の答え合わせ</button><button id="reset" type="button">全部リセットする（運営向け）</button><br><small>※本当に良いUIではありません。絶対に真似しないでください。</small></footer>
+<section class="learn hide" id="learnPanel" aria-label="ニールセン10原則とこのデモの対応"><h2>答え合わせ：ニールセンの10原則をどう反転したか</h2><table><thead><tr><th>原則</th><th>このサイトのアンチパターン</th></tr></thead><tbody>
+<tr><th>① 状態の可視性</th><td>支援率と棒の長さが一致せず、状態表示が矛盾する。</td></tr>
+<tr><th>② 現実世界との一致</th><td>支援を「修行」「覚悟」など独自用語で表す。</td></tr>
+<tr><th>③ コントロールと自由</th><td>閉じようとすると説教が出る。戻ると金額がリセットされる。</td></tr>
+<tr><th>④ 一貫性と標準</th><td>画面ごとに色とボタンの意味が変わる。</td></tr>
+<tr><th>⑤ エラーの防止</th><td>売り切れの商品もクリックでき、後から怒られる。</td></tr>
+<tr><th>⑥ 記憶より認識</th><td>リターン前に靴下神経衰弱をさせ、確認では情報を隠す。</td></tr>
+<tr><th>⑦ 柔軟性と効率性</th><td>金額を1円単位で調整。後からショートカットが現れる。</td></tr>
+<tr><th>⑧ 美的で最小限のデザイン</th><td>原色、回転、過度な装飾、競合する見出し。</td></tr>
+<tr><th>⑨ エラーからの回復</th><td>「覚悟不足」など原因・対処法に乏しいエラー。</td></tr>
+<tr><th>⑩ ヘルプと文書</th><td>質問に対して説教が始まるFAQ。</td></tr>
+</tbody></table><p>正しいUIなら、迷わず選び、金額を指定し、内容を確認して完了できる。今回はその逆を体験しています。</p></section>
+
+<!-- 模擬手続き。実際のデータ送信・決済はありません。 -->
+<div id="overlay" class="overlay" role="presentation" hidden>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+<div class="modal-head"><div><small>⚠️ 人生の決断（デモです）</small><h2 id="dialogTitle">片方探索への入門審査</h2></div><button class="close" id="closeButton" type="button">✕ 見捨てる</button></div>
+<ol class="stepper"><li data-stage="1">① 探す</li><li data-stage="2">② 耐える</li><li data-stage="3">③ 疑う</li><li data-stage="4">④ 悟る</li></ol>
+<div id="stage1">
+<div class="hintBox">商品を選ぶ前に、靴下の神経衰弱をしてください。「買いたい」という意思とは無関係です。</div>
+<div class="choices" id="tiles"></div><p id="gameMessage" aria-live="polite" style="font-weight:900">同じ色の靴下を2枚発見すると、ようやく選択肢が現れます。</p>
+<div class="options" id="rewardOptions" hidden>
+<label class="option"><input type="radio" name="chosenReward" value="r1"> 片方だけプラン <span>1,980円</span></label>
+<label class="option"><input type="radio" name="chosenReward" value="r2"> 【早割】1足プラン <span>3,480円</span></label>
+<label class="option"><input type="radio" name="chosenReward" value="r3"> 1足プラン <span>3,980円</span></label>
+<label class="option"><input type="radio" name="chosenReward" value="r4"> 3足セット <span>9,800円</span></label>
+<label class="option"><input type="radio" name="chosenReward" value="r5"> 家族まるごとプラン <span>19,800円</span></label>
+</div><div class="actions"><button class="action" id="next1" type="button" disabled>諦める → 次へ</button></div>
+</div>
+<div id="stage2" hidden><div class="hintBox">支援は1円からではありませんが、操作は1円ずつです。人生は靴下の片方を探すためにあるのです。</div>
+<div class="amount-display" id="amountDisplay" aria-live="polite">0円</div><p id="amountMeta" class="text-center">あなたの努力を数えています。</p>
+<div class="increment"><button id="minus1" type="button">－1円 😢</button><button id="plus1" type="button">＋1円 🔥</button></div>
+<button id="shortcut" class="shortcut" type="button" hidden>禁断のショートカット：最低金額にワープする</button>
+<details class="secret-input"><summary>※裏口：普通の数字入力（邪道）</summary><label>金額を入力 <input type="number" min="0" step="1" id="directAmount" inputmode="numeric"></label><button type="button" id="applyAmount">入力を適用する</button></details>
+<div id="amountError" class="error" hidden role="alert"></div>
+<div class="actions"><button class="action secondary" id="back2" type="button">すべて忘れて戻る</button><button class="action" id="next2" type="button">本当に次へ？</button></div></div>
+<div id="stage3" hidden><div class="hintBox">確認できると思いましたか？　知ることではなく信じることが大切です。</div>
+<div class="confirm-list"><div><span>リターン</span><b>記憶してください</b></div><div><span>支援金額</span><b>信じてください</b></div><div><span>お届け予定</span><b>いずれ</b></div></div>
+<p id="confirmMessage">最後の事前の最終確認へ進みます。</p>
+<div class="actions"><button class="action secondary" id="back3" type="button">あえて戻る</button><button class="action" id="confirm" type="button">支援を確定する？</button></div>
+<p style="font-size:12px">※ここでの「確定」は架空の体験です。実際の支払いは一切発生しません。</p></div>
+<div id="stage4" hidden><div class="result"><div style="font-size:55px">🎉🧦🎊</div><h3>ご支援が完了……したと思いましたか？</h3><p style="font-size:19px;font-weight:900">本日の修行、終了！　靴下の片方はまだ見つかっていません。</p><p>ワークショップ用デモのため、実際の支払い・注文は発生していません。</p><p id="finalDetail"></p><button class="action" id="finish" type="button">現実世界に戻る</button></div></div>
+</div></div>
+<div id="toast" class="toast" role="status" hidden><button id="toastClose" type="button" aria-label="通知を閉じる">✕</button><span id="toastMessage"></span></div>
+<script>
+(()=>{
+'use strict';
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
+const rewards={r1:{name:'片方だけプラン',price:1980},r2:{name:'【早割】1足プラン',price:3480,soldout:true},r3:{name:'1足プラン',price:3980},r4:{name:'3足セット',price:9800},r5:{name:'家族まるごとプラン',price:19800}};
+let selected=null,step=1,matched=false,opened=[],deck=[],amount=0,amountClicks=0,confirmCount=0,closeCount=0,escapes=0,progressClicks=0,toastTimer=null,activeBefore=null;
+function toast(s){$('#toastMessage').textContent=s;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,5200)}
+$('#toastClose').onclick=()=>$('#toast').hidden=true;
+function changeStatus(){progressClicks++;const widths=[34,97,13,75,23,100,7];const texts=['138%達成。でも棒は34%。','昨日は達成、今日は出発前。','処理完了！ まだ何もしていません。','片方は見つかったことにします。','情報は変化します。理由はありません。'];$('#progressBar').style.width=widths[progressClicks%widths.length]+'%';$('#progressText').textContent=texts[progressClicks%texts.length];$('#statusText').textContent='システム状態：'+(progressClicks%2?'完了しました。準備中です。':'未開始ですが終了しています。')}
+$('#login').onclick=()=>toast('ログイン画面は旅に出ました。帰宅予定は未定です。');
+let escapeButton=$('#escapeButton');escapeButton.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&escapes<3){escapes++;escapeButton.style.transform=`translate(${escapes%2?50:-46}px,${escapes*7}px) rotate(${escapes%2?4:-4}deg)`;escapeButton.textContent=escapes===3?'今ならクリックできます（敗北）':'捕まえられるものなら捕まえてみなさい！';changeStatus()}});
+escapeButton.onclick=()=>open();
+function resetTiles(){matched=false;opened=[];deck=['青','黄','赤','黄','青','赤'].map((s,i)=>({s,id:i,open:false,matched:false}));deck.sort(()=>Math.random()-.5);const tiles=$('#tiles');tiles.innerHTML='';deck.forEach((item,i)=>{const b=document.createElement('button');b.type='button';b.className='socktile';b.textContent='？';b.setAttribute('aria-label',`不明な靴下 ${i+1}`);b.onclick=()=>flip(i);tiles.append(b)});$('#rewardOptions').hidden=true;$('#gameMessage').textContent='同じ色の靴下を2枚発見すると、ようやく選択肢が現れます。';$('#next1').disabled=true;$$('input[name="chosenReward"]').forEach(r=>r.checked=false)}
+function repaint(){ $$('#tiles button').forEach((b,i)=>{const d=deck[i];b.classList.toggle('revealed',d.open);b.classList.toggle('matched',d.matched);b.textContent=(d.open||d.matched)?'🧦 '+d.s:'？';b.setAttribute('aria-label',(d.open||d.matched)?d.s+'い靴下':'不明な靴下 '+(i+1))}) }
+function flip(i){let d=deck[i];if(d.open||d.matched||opened.length>=2||matched)return;d.open=true;opened.push(i);repaint();if(opened.length===2){const a=deck[opened[0]],b=deck[opened[1]];if(a.s===b.s){a.matched=b.matched=true;matched=true;opened=[];$('#rewardOptions').hidden=false;$('#gameMessage').textContent='一致！ 何の関係もない試練を突破しました。リターンを選んでください。';toast('靴下が揃いました。ただし目標は「支援」です。')}else{$('#gameMessage').textContent='違います。人生もまた間違いの連続です。';const xs=[...opened];setTimeout(()=>{xs.forEach(j=>deck[j].open=false);opened=[];repaint()},800)}}}
+function showStep(n){step=n;[1,2,3,4].forEach(i=>{$('#stage'+i).hidden=i!==n;const s=$(`[data-stage="${i}"]`);s.classList.toggle('current',i===n);s.classList.toggle('done',i<n)});$('#dialogTitle').textContent=['','片方探索への入門審査','1円ずつ積み上げる修行','信念を試す最後の確認','片方のいない祝福'][n];$('.modal').scrollTop=0;changeStatus()}
+function open(id){activeBefore=document.activeElement;selected=null;closeCount=0;confirmCount=0;resetTiles();$('#overlay').hidden=false;document.body.style.overflow='hidden';showStep(1);if(id){if(rewards[id].soldout){toast('ERROR：SOCK-404。売り切れでも押せる。それが修行です。');$('#gameMessage').textContent='売り切れプランを選びました。理由は「運命」です。別のプランを探してください。'}else{toast('直接プランを選んだつもりですか？ まず靴下を揃えてください。')}}$('#closeButton').focus()}
+function close(force=false){if(!force&&step!==4&&closeCount<2){closeCount++;toast(closeCount===1?'本当に立ち去るのですか？ 靴下はあなたを待っています。':'最後の最終確認の予行演習です。もう一度押してください。');$('#closeButton').textContent=closeCount===1?'✕ 本当に見捨てる':'✕ 最後の最後に閉じる';return}$('#overlay').hidden=true;document.body.style.overflow='';$('#closeButton').textContent='✕ 見捨てる';activeBefore?.focus?.()}
+$$('[data-reward]').forEach(b=>b.onclick=()=>open(b.dataset.reward));$('#closeButton').onclick=()=>close();$('#finish').onclick=()=>close(true);$('#overlay').addEventListener('click',e=>{if(e.target===$('#overlay'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#overlay').hidden)close()});
+$$('input[name="chosenReward"]').forEach(r=>r.addEventListener('change',()=>{selected=r.value;$('#next1').disabled=false;if(rewards[selected].soldout){toast('おめでとうございます。完売です。次へ進めそうで進めません。')}}));
+$('#next1').onclick=()=>{if(!selected)return;if(rewards[selected].soldout){toast('ERROR：SOCK-SOLDOUT。原因：勇気が遅すぎました。');$('#gameMessage').textContent='売り切れです。他のプランを選んでください（最初に言えばよかったですね）。';return}amount=rewards[selected].price-12;amountClicks=0;updateAmount();$('#shortcut').hidden=true;$('#amountError').hidden=true;showStep(2)};
+function updateAmount(){const min=selected?rewards[selected].price:0;$('#amountDisplay').textContent=yen(amount);$('#amountMeta').textContent='最低 '+yen(min)+' / 足りない '+yen(Math.max(0,min-amount))+' / 操作 '+amountClicks+'回';$('#directAmount').value=amount;if(amountClicks>=7)$('#shortcut').hidden=false}
+function addAmount(diff){amount=Math.max(0,amount+diff);amountClicks++;if(amountClicks===5){amount=Math.max(0,amount-3);toast('神のいたずら：－3円しました。進捗とは戻るものです。')}updateAmount();$('#amountError').hidden=true}
+$('#plus1').onclick=()=>addAmount(1);$('#minus1').onclick=()=>addAmount(-1);$('#shortcut').onclick=()=>{amount=rewards[selected].price;updateAmount();toast('ショートカットを使いました。あなたの合理性が勝ちました。')};$('#applyAmount').onclick=()=>{let n=Number($('#directAmount').value);if(Number.isInteger(n)&&n>=0&&n<1e9){amount=n;updateAmount();toast('入力できるなら最初からそうしてください。')}else toast('ERROR：靴下の単位が違います。')};
+$('#next2').onclick=()=>{if(amount<rewards[selected].price){$('#amountError').hidden=false;$('#amountError').textContent='ERROR SOCK-003：覚悟が '+yen(rewards[selected].price-amount)+' 不足しています。対処法は自己責任です。';return}confirmCount=0;$('#confirm').textContent='支援を確定する？';$('#confirmMessage').textContent='最後の事前の最終確認へ進みます。';showStep(3)};
+$('#back2').onclick=()=>{selected=null;resetTiles();showStep(1);toast('戻りました。なぜか選択履歴も全消去しました。')};$('#back3').onclick=()=>{amount=rewards[selected].price-12;amountClicks=0;$('#shortcut').hidden=true;updateAmount();showStep(2);toast('戻る操作に成功しました。金額は12円不足に戻しました。')};
+$('#confirm').onclick=()=>{confirmCount++;const lines=['本当に本当ですか？','最後の最終確認の事前確認は完了しましたか？','まだ靴下を探し続ける覚悟はありますか？'];if(confirmCount<4){$('#confirmMessage').textContent=lines[confirmCount-1]||'もう確認することがありません。';$('#confirm').textContent=['','はい、絶対に確定','最終の前の最終確認','これ以上の確認はやめて'][confirmCount];toast('確認 '+confirmCount+'/4：判断を先延ばしにしています。')}else{$('#finalDetail').textContent=`架空の選択：${rewards[selected].name}／${yen(amount)}（支払いなし）`;showStep(4)}};
+$('#learnToggle').onclick=()=>{const panel=$('#learnPanel');const opening=panel.classList.contains('hide');panel.classList.toggle('hide',!opening);$('#learnToggle').setAttribute('aria-expanded',String(opening));if(opening)panel.scrollIntoView({behavior:'smooth'})};$('#reset').onclick=()=>{close(true);window.scrollTo({top:0,behavior:'smooth'});escapes=0;escapeButton.style.transform='';escapeButton.textContent='👆 人生を靴下に捧げる（クリックできれば）';$('#learnPanel').classList.add('hide');$('#learnToggle').setAttribute('aria-expanded','false');toast('リセットしました。靴下は相変わらず片方ありません。')};
+})();
+</script>
+</body></html>
